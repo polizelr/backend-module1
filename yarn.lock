@@ -19,6 +19,11 @@
   resolved "https://cglcloud.jfrog.io/cglcloud/api/npm/npm-remote/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha1-HBJhu+qhCoBVu8XYq4S3sq/IRqA=
 
+"@types/uuid@8.3.0":
+  version "8.3.0"
+  resolved "https://cglcloud.jfrog.io/cglcloud/api/npm/npm-remote/@types/uuid/-/uuid-8.3.0.tgz#215c231dff736d5ba92410e6d602050cce7e273f"
+  integrity sha1-IVwjHf9zbVupJBDm1gIFDM5+Jz8=
+
 abbrev@1:
   version "1.1.1"
   resolved "https://cglcloud.jfrog.io/cglcloud/api/npm/npm-remote/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -1111,6 +1116,19 @@ utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://cglcloud.jfrog.io/cglcloud/api/npm/npm-remote/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
+
+uuid@8.3.0:
+  version "8.3.0"
+  resolved "https://cglcloud.jfrog.io/cglcloud/api/npm/npm-remote/uuid/-/uuid-8.3.0.tgz#ab738085ca22dc9a8c92725e459b1d507df5d6ea"
+  integrity sha1-q3OAhcoi3JqMknJeRZsdUH311uo=
+
+uuidv4@^6.2.3:
+  version "6.2.3"
+  resolved "https://cglcloud.jfrog.io/cglcloud/api/npm/npm-remote/uuidv4/-/uuidv4-6.2.3.tgz#b478932d508484fda8a6a964fe2b897cca5eede2"
+  integrity sha1-tHiTLVCEhP2opqlk/iuJfMpe7eI=
+  dependencies:
+    "@types/uuid" "8.3.0"
+    uuid "8.3.0"
 
 vary@~1.1.2:
   version "1.1.2"

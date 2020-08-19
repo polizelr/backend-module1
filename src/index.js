@@ -1,50 +1,69 @@
+const { uuid } = require('uuidv4');
+
 const express = require('express');
 
 const app = express();
 
 app.use(express.json());
 
-app.get('/projects', (req, res) => {
-  console.log(req.query);
+const projects = [];
 
-  return res.json([
-    'Project 1',
-    'Project 2',
-    'Project 3'
-  ]);
+app.get('/projects', (req, res) => {
+
+  const { title } = req.query;
+
+  const results = title ? 
+    projects.filter(project => project.title.includes(title)) :
+    projects
+
+  return res.json(results);
 });
 
 app.post('/projects', (req, res) => {
-  const {title, owned} = req.body;
-  console.log(title, owned);  
+  const {title, owner} = req.body;
 
-  return res.json([
-    'Project 1',
-    'Project 2',
-    'Project 3',
-    'Project 4'
-  ]);
+  const project = {id: uuid(), title, owner};
+
+  projects.push(project);
+  
+  return res.json(project);
 });
 
 app.put('/projects/:id', (req, res) => {
-  console.log(req.params);
+  const { id } = req.params;
 
-  return res.json([
-    'Project 5',
-    'Project 2',
-    'Project 3',
-    'Project 4'
-  ]);
+  const {title, owner} = req.body;
+
+  const index = projects.findIndex(project => project.id == id);
+
+  if(index < 0){
+    return res.status(400).json({error: 'Project not found.'});
+  }
+
+  const project = {
+    id,
+    title,
+    owner,
+  };
+  
+  projects[index] = project;
+
+  return res.json(project);
 });
 
 app.delete('/projects/:id', (req, res) => {
-  console.log(req.params);
+  const {id} = req.params;
 
-  return res.json([
-    'Project 2',
-    'Project 3',
-    'Project 4'
-  ]);
+  const index = projects.findIndex(project => project.id == id);
+
+  if(index < 0){
+    return res.status(400).json({message: 'Project not found.'});
+  }
+
+  projects.splice(index, 1);
+
+  //no content response
+  return res.status(204).send();
 });
 
 app.listen(3333, () => console.log('Back-end started!'));
